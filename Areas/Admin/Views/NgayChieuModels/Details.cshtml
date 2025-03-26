@@ -1,0 +1,28 @@
+﻿@model OnlineMovieTicket.Models.NgayChieuModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h3>Chi tiết ngày chiếu</h3>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        <lable>Ngày chiếu:</lable>
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NgayChieu)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model?.MaNgayChieu" class="btn btn-primary">Chỉnh sửa</a> |
+                <a asp-action="Index" class="btn btn-primary">Trở về danh sách ngày chiếu</a>
+            </div>
+        </div>
+    </div>
+</div>

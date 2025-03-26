@@ -1,0 +1,42 @@
+﻿@model OnlineMovieTicket.Models.PhongModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chỉnh sửa phòng</h4>
+            <form asp-action="Edit" method="post" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaPhong" />
+                <div class="row">
+                    <div class="form-group">
+                        <label asp-for="TenPhong" class="control-label"></label>
+                        <input asp-for="TenPhong" class="form-control" />
+                        <span asp-validation-for="TenPhong" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">                       
+                        <label asp-for="MaRap" class="control-label"></label>
+                        <select asp-for="MaRap" class="form-control" asp-items="ViewBag.MaRap" disabled></select>
+                        <span asp-validation-for="MaRap" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SoLuongGhe" class="control-label"></label>
+                        <input asp-for="SoLuongGhe" class="form-control" />
+                        <span asp-validation-for="SoLuongGhe" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Lưu" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách phòng</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

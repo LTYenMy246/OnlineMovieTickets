@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "PaymentFail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="payment-status-container">
+    <h2 class="payment-status-title">Tình trạng thanh toán</h2>
+    <h3 class="payment-status-message">@TempData["Message"]</h3>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Màu nền tổng thể */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Canh giữa các nội dung */
+    }
+    .payment-status-container {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-status-title {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+
+    .payment-status-message {
+        font-size: 22px;
+        font-weight: 500;
+        text-align: center;
+        color: #dc3545;
+        margin-top: 10px;
+    }
+</style>

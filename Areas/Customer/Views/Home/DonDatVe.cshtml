@@ -1,0 +1,301 @@
+﻿@model IEnumerable<OnlineMovieTicket.Models.GheSuatChieuModel>
+@{
+    ViewData["Title"] = "DatVe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var maSuatChieu = ViewBag.MaSuatChieu;
+    var phim = ViewBag.Phim;
+    var phong = ViewBag.Phong;
+    var rap = ViewBag.Phong.Rap;
+    var ngayChieu = ViewBag.NgayChieu;
+    var thoiGianChieu = ViewBag.ThoiGianChieu;
+    var giaVe = ViewBag.GiaVe;
+    var gheSuatChieu = ViewBag.GheSuatChieu;
+}
+@if (TempData["ErrorMessage"] != null)
+
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="pb-3">
+                    <div class="mb-5">
+                        <div class="bg-white" style="padding: 10px; border: 1px;">
+                            <div class="input-group d-flex justify-content-center">
+                                <h6><strong>--- Chọn ghế cho phim @ViewBag.Phim.TenPhim ---</strong></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white mb-3" style="padding: 30px;">
+                        <div class="d-flex justify-content-center">
+                            <label>Màn hình</label>
+                        </div>
+                        <hr style="border: 1px solid #000; margin: 20px 0;" />
+                        <div class="d-flex justify-content-center">
+                            <form asp-action="DonDatVe" method="post">
+                                <input type="hidden" name="maSuatChieu" value="@maSuatChieu" />
+                                <input type="hidden" name="selectedGheIds" id="selectedGheIds" />
+                                <div class="seat-grid">
+                                    @foreach (var ghe in ViewBag.GheSuatChieu)
+                                    {
+                                        <button type="button" class="seat-btn @(ghe.TrangThaiGhe ? "seat-taken" : "seat-available")"
+                                        @(ghe.TrangThaiGhe ? "disabled" : "")
+                                                value="@ghe.MaGhe"
+                                                data-id="@ghe.MaGhe">
+                                            @ghe.Ghe.TenGhe
+                                        </button>
+                                    }
+                                </div>
+                                <div class="seat-status">
+                                    <div class="seat-box seat-sold"></div>
+                                    <span class="seat-label">Ghế đã bán</span>
+                                    <div class="seat-box seat-selected"></div>
+                                    <span class="seat-label">Ghế đang chọn</span>
+                                </div>
+                                <hr style="border: 1px solid #000; margin: 20px 0;" />
+                                <div class="bg-white" style="padding: 20px;">
+                                    <div class="input-group d-flex justify-content-center">
+                                        <button id="btn-tt" type="submit" class="btn btn-tt">Thanh toán</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="order-summary bg-light shadow rounded p-4">
+                    <div class="text-center mb-3">
+                        <img src="/@ViewBag.Phim.AnhPhim" class="img-fluid rounded" alt="Ảnh Phim">
+                        <hr class="my-4" />
+                        <div class="movie-info-container text-center">
+                            <h5 class="text-center mb-3">@ViewBag.Phim.TenPhim</h5>
+                            <p><strong>Giá vé:</strong> @ViewBag.GiaVe.ToString("N0") VND</p>
+                        </div>
+                    </div>
+                    <hr class="divider my-4" />
+                    <div class="text-center mb-3">
+                        <h4>Đơn đặt vé của bạn</h4>
+                    </div>
+                    <div class="order-details">
+                        <p><strong>Rạp:</strong> @ViewBag.Phong.Rap.TenRap</p>
+                        <p><strong>Phòng chiếu:</strong> @ViewBag.Phong.TenPhong</p>
+                        <p><strong>Ngày chiếu:</strong> @ViewBag.NgayChieu.NgayChieu.ToString("dd/MM/yyyy")</p>
+                        <p><strong>Thời gian chiếu:</strong> @ViewBag.ThoiGianChieu.ThoiGianChieu</p>
+                        <p><strong>Ghế đã chọn:</strong> <span id="gheDaChon"></span></p>
+                        <p><strong>Tổng tiền:</strong> <span id="tongTien">0</span> VND</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts {
+    <script>
+        $(document).on('click', '.seat-btn.seat-available', function () {
+            $(this).toggleClass('selected');
+            updateSelectedSeats();
+        });
+
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        function updateSelectedSeats() {
+            var selectedSeats = [];
+            var selectedSeatNames = [];
+            $('.seat-btn.selected').each(function () {
+                var gheId = $(this).data('id');
+                var gheName = $(this).text();
+                selectedSeats.push($(this).data('id'));
+                selectedSeatNames.push(gheName);
+            });
+            $('#selectedGheIds').val(selectedSeats.join(','));
+
+            var tongTien = selectedSeats.length * @ViewBag.GiaVe
+            $('#tongTien').text(formatNumber(tongTien) + "");
+
+
+            if (selectedSeatNames.length > 0) {
+                $('#gheDaChon').text(selectedSeatNames.join(', '));
+            } else {
+                $('#gheDaChon').text("0");
+            }
+        }
+    </script>
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; 
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .seat-grid {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-gap: 10px;
+        justify-items: center;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 10px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    }
+
+    .seat-btn {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 5px; 
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 16px; 
+    }
+
+    .seat-available {
+        background-color: #ffffff; /* Màu trắng cho ghế trống */
+        color: black;
+    }
+
+    .seat-taken {
+        background-color: #c3faf7; /* Màu xanh nhạt cho ghế đã đặt */
+        color: #444; 
+        border: 1px solid #87ceeb; 
+    }
+
+    .seat-btn.selected {
+        background-color: #e88b4d; /* Màu cam cho ghế đã chọn */
+        color: white;
+        border: 1px solid #d76a30; 
+    }
+
+    .seat-btn:disabled {
+        background-color: #a1a1a1; /* Màu xám cho ghế không chọn được */
+        color: #fff;
+        border: 1px solid #888;
+    }
+
+    .seat-btn:hover:not(:disabled) {
+        background-color: #4caf50; /* Màu xanh lá khi hover */
+        color: #fff;
+        border: 1px solid #388e3c; 
+    }
+
+    .seat-btn:focus {
+        outline: none;
+        box-shadow: 0 0 5px #007bff; /* Hiệu ứng bóng xanh dương */
+        border: 1px solid #007bff; 
+    }
+
+    /* Label cho ghế */
+    .seat-grid label {
+        text-align: center;
+        margin-top: 20px;
+        display: block;
+        font-weight: bold;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .bg-white {
+        background-color: #ffffff; 
+        border-radius: 10px; 
+        padding: 20px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    }
+
+    h4, p {
+        margin: 5px 0; 
+        color: #333; 
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .btn-tt {
+        padding: 10px 20px;
+        background-color: #7ab730; 
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-tt:hover {
+            background-color: #71ded5; 
+        }
+
+    .container {
+        background-color: #ffffff; 
+        border-radius: 10px; 
+        padding: 20px; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-summary img {
+        width: 100%; 
+        max-width: 220px; 
+        height: auto; 
+        margin-bottom: 15px;
+        border-radius: 16px;
+        object-fit: cover; 
+    }
+
+    .movie-info-container {
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 8px; 
+        padding: 15px; 
+        margin-bottom: 20px; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    }
+
+        .movie-info-container h5 {
+            font-size: 18px;
+            font-weight: bold;
+            color: black; 
+            margin-bottom: 10px; 
+        }
+
+    .seat-status {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+        margin-top: 10px;
+    }
+
+    .seat-box {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+    }
+
+    .seat-sold {
+        background-color: #a1a1a1;
+        border: 1px solid #bcbcbc;
+    }
+
+    .seat-selected {
+        background-color: #e88b4d;
+        border: 1px solid #d77b3c;
+    }
+
+    .seat-label {
+        font-size: 14px;
+        color: #333; 
+        margin-right: 20px;
+    }
+</style>

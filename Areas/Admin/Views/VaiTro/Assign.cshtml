@@ -1,0 +1,57 @@
+﻿@model OnlineMovieTicket.Areas.Admin.Models.PhienNguoiDungVm
+@{
+    ViewData["Title"] = "Assign";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+	<div class="card">
+		<div class="card-body">
+			<div class="col-6">
+				<h4>Phân công vai trò</h4>
+			</div>
+			<hr />
+			@if (!string.IsNullOrEmpty(ViewBag.message))
+			{
+				<div class="alert alert-danger">@ViewBag.message</div>
+			}
+
+			<form asp-action="Assign" method="post" id="roleForm" enctype="multipart/form-data">
+				<div class="p-4 rounded border fw-bold">
+					<div asp-validation-summary="ModelOnly" class="text-danger">
+					</div>
+					<br />
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label asp-for="UserId"></label>
+						</div>
+						<div class="col-5">
+							<select asp-for="UserId" asp-items="ViewBag.UserID" class="form-control"></select>
+							@* <input asp-for="CategoryID" class="form-control" /> *@
+						</div>
+						<span asp-validation-for="UserId" class="text-danger"></span>
+					</div>
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label asp-for="RoleId"></label>
+						</div>
+						<div class="col-5">
+							<select asp-for="RoleId" asp-items="ViewBag.RoleID" class="form-control"></select>
+							@* <input asp-for="SpecialTagID" class="form-control" /> *@
+						</div>
+						<span asp-validation-for="RoleId" class="text-danger"></span>
+					</div>
+					<div class="mb-3">
+						<input type="submit" class="btn btn-primary" value="Lưu" />
+						<a asp-action="Index" class="btn btn-primary">Trở về danh sách vai trò</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+	}
+}

@@ -1,0 +1,53 @@
+﻿@model OnlineMovieTicket.Models.SuatChieuModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4>Xóa suất chiếu</h4>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Phim)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Phim.DaoDien)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Phong)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Phong.TenPhong)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NgayChieu)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NgayChieu.MaNgayChieu)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.ThoiGianChieu)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.ThoiGianChieu.MaThoiGianChieu)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.GiaVeSuatChieu)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.GiaVeSuatChieu)
+                    </dd>
+                </dl>
+            </div>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MaSuatChieu" />
+                <input type="submit" value="Xóa" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-primary">Trở về danh sách suất chiếu</a>
+            </form>
+        </div>
+    </div>
+</div>

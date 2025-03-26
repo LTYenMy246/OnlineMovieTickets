@@ -1,0 +1,45 @@
+﻿@model OnlineMovieTicket.Models.RapModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tạo rạp mới</h4>
+            <form asp-action="Create" method="post" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*                 <input type="hidden" asp-for="MaRap" />
+ *@                <div class="row">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Tên rạp</label>
+                        <div class="col-sm-9">
+                            <input asp-for="TenRap" class="form-control"/>
+                            <span asp-validation-for="TenRap" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Địa chỉ</label>
+                        <div class="col-sm-9">
+                            <input asp-for="DiaChiRap" class="form-control" />
+                            <span asp-validation-for="DiaChiRap" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Tạo" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách rạp</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

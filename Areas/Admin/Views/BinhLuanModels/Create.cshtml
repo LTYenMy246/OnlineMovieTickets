@@ -1,0 +1,49 @@
+﻿@model OnlineMovieTicket.Models.BinhLuanModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>BinhLuanModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NoiDungBinhLuan" class="control-label"></label>
+                <input asp-for="NoiDungBinhLuan" class="form-control" />
+                <span asp-validation-for="NoiDungBinhLuan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgayBinhLuan" class="control-label"></label>
+                <input asp-for="NgayBinhLuan" class="form-control" />
+                <span asp-validation-for="NgayBinhLuan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenNguoiBinhLuan" class="control-label"></label>
+                <input asp-for="TenNguoiBinhLuan" class="form-control" />
+                <span asp-validation-for="TenNguoiBinhLuan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaNguoiBinhLuan" class="control-label"></label>
+                <select asp-for="MaNguoiBinhLuan" class ="form-control" asp-items="ViewBag.MaNguoiBinhLuan"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaPhim" class="control-label"></label>
+                <select asp-for="MaPhim" class ="form-control" asp-items="ViewBag.MaPhim"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,139 @@
+﻿@model OnlineMovieTicket.Models.PhimModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tạo phim mới</h4>
+            <form asp-action="Create" method="post" enctype="multipart/form-data" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaPhim" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ảnh phim</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="anhPhim" class="form-control" accept="image/*" />
+                                <span asp-validation-for="AnhPhim" class="text-danger"></span>                             
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nội dung</label>
+                            <div class="col-sm-9">
+                                <input asp-for="NoiDungPhim" class="form-control" />
+                                <span asp-validation-for="NoiDungPhim" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Trailer phim</label>
+                            <div class="col-sm-9">
+                                <input asp-for="TrailerPhim" class="form-control" />
+                                <span asp-validation-for="TrailerPhim" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Thể loại</label>
+                            <div class="col-sm-9">
+                                <input asp-for="TheLoai" class="form-control" />
+                                <span asp-validation-for="TheLoai" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Tên phim</label>
+                            <div class="col-sm-9">
+                                <input asp-for="TenPhim" class="form-control" />
+                                <span asp-validation-for="TenPhim" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Quốc gia</label>
+                            <div class="col-sm-9">
+                                <span asp-validation-for="QuocGia" class="text-danger"></span> <input asp-for="QuocGia" class="form-control" />
+                                <span asp-validation-for="QuocGia" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Tình trạng</label>
+                            <div class="col-sm-9">
+                                <input asp-for="TinhTrang" class="form-check-input" />
+                                <span asp-validation-for="TinhTrang" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Đạo diễn</label>
+                            <div class="col-sm-9">
+                                <input asp-for="DaoDien" class="form-control" />
+                                <span asp-validation-for="DaoDien" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Thời lượng</label>
+                            <div class="col-sm-9">
+                                <input asp-for="ThoiLuong" class="form-control" />
+                                <span asp-validation-for="ThoiLuong" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Diễn viên</label>
+                            <div class="col-sm-9">
+                                <input asp-for="DienVien" class="form-control" />
+                                <span asp-validation-for="DienVien" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ngày khởi chiếu</label>
+                            <div class="col-sm-9">
+                                <input asp-for="NgayKhoiChieu" class="form-control" />
+                                <span asp-validation-for="NgayKhoiChieu" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Tạo" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách phim</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

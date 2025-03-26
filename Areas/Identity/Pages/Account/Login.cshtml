@@ -1,0 +1,66 @@
+﻿@page
+@model LoginModel
+
+@{
+    Layout = "~/Views/Shared/_IdentityLayout.cshtml";
+}
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <img src="~/images/KNCinema.png" alt="logo">
+                        </div>
+                        <h6>Xin chào!</h6>
+                        <h3 class="fw-light">Đăng nhập</h3>
+                        <form asp-validation-summary="All" method="post" class="pt-3">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <input asp-for="Input.UserName" class="form-control form-control-lg" placeholder="Nhập tên đăng nhập" />
+                                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="Input.Password" id="passwordInput" class="form-control form-control-lg" placeholder="Nhập mật khẩu" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <label class="form-check-label text-muted" for="showPasswordCheck">
+                                            <input type="checkbox" class="form-check-input" id="showPasswordCheck" onclick="togglePassword()"> Hiện mật khẩu
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 d-grid gap-2">
+                                <button type="submit" class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn">Đăng nhập</button>
+                            </div>
+                            
+                            <script>
+                                function togglePassword() {
+                                    var passwordInput = document.getElementById('passwordInput');
+                                    var showPasswordCheck = document.getElementById('showPasswordCheck');
+                                    if (showPasswordCheck.checked) {
+                                        passwordInput.setAttribute('type', 'text');
+                                    } else {
+                                        passwordInput.setAttribute('type', 'password');
+                                    }
+                                }
+                            </script>
+                            <div class="text-center mt-4 fw-light">
+                                --------Tạo tài khoản--------<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                                    <h6 class="text-primary">Đăng ký</h6>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

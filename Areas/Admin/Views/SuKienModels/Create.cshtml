@@ -1,0 +1,56 @@
+﻿@model OnlineMovieTicket.Models.SuKienModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tạo phim mới</h4>
+            <form asp-action="Create" method="post" enctype="multipart/form-data" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaSuKien"/>
+                <div class="row">
+                    <div class="form-group">
+                        <label asp-for="TenSuKien" class="control-label"></label>
+                        <input asp-for="TenSuKien" class="form-control" />
+                        <span asp-validation-for="TenSuKien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-form-label">Ảnh phim</label>
+                        <div class="col-sm-9">
+                            <input type="file" name="anhSuKien" class="form-control" accept="image/*" />
+                            <span asp-validation-for="AnhSuKien" class="text-danger"></span>
+                        </div>
+                    </div>                   
+                    <div class="form-group">
+                        <label asp-for="NoiDungSuKien" class="control-label"></label>
+                        <input asp-for="NoiDungSuKien" class="form-control" />
+                        <span asp-validation-for="NoiDungSuKien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NgayDangSuKien" class="control-label"></label>
+                        <input asp-for="NgayDangSuKien" class="form-control" />
+                        <span asp-validation-for="NgayDangSuKien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaPhim" class="control-label"></label>
+                        <select asp-for="MaPhim" class="form-control" asp-items="ViewBag.MaPhim"></select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="Tạo" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách sự kiện</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

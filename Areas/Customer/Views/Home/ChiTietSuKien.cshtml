@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "ChiTietSuKien";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var suKien = ViewBag.SuKien as OnlineMovieTicket.Models.SuKienModel;
+}
+<section class="sukien-detail-container">
+    <div class="container">
+        <div class="sukien-detail-content">
+            <div class="sukien-info">
+                <h5 style="text-align: center;">@suKien.TenSuKien</h5>
+                <hr style="border: 1px solid;" />
+                <p><strong>Phim liên quan: </strong><a href="@Url.Action("ChiTietPhim", "Home", new { id = suKien.MaPhim })">@suKien.Phim.TenPhim</a></p>
+                <p><strong>Ngày đăng:</strong> @suKien.NgayDangSuKien.ToString("dd/MM/yyyy")</p>
+                <p><strong>Nội dung:</strong></p>
+                <p>@suKien.NoiDungSuKien</p>                       
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; 
+        margin: 0;
+        padding: 0;
+    }
+
+    .sukien-detail-container {
+        padding: 50px 0;
+        background-color: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .divider {
+        border: 2px solid #007bff;
+        width: 60%;
+        margin: 0 auto 30px;
+    }
+
+        .sukien-info a {
+            color: green;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+            .sukien-info a:hover {
+                color: #0056b3;
+            }
+</style>

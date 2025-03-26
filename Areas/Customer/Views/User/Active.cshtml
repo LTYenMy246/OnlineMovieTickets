@@ -1,0 +1,60 @@
+﻿@model OnlineMovieTicket.Models.AppNguoiDung
+@{
+    ViewData["Title"] = "Active";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">Mở khóa tài khoản người dùng</h4>
+			@if (!string.IsNullOrEmpty(ViewBag.AdminLockError))
+			{
+				<div class="alert alert-danger">@ViewBag.AdminLockError</div>
+			}
+			<form asp-action="Active" method="post">
+				<div class="p-4 rounded border text-black">
+					<div asp-validation-summary="ModelOnly" class="text-danger">
+					</div>
+					<input type="hidden" asp-for="Id" value="@Model.Id" />
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label asp-for="UserName"></label>
+						</div>
+						<div class="col-5">
+							<input asp-for="UserName" readonly="readonly" class="form-control" readonly="readonly" />
+						</div>
+						<span asp-validation-for="UserName" class="text-danger"></span>
+					</div>
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label asp-for="Ho"></label>
+						</div>
+						<div class="col-5">
+							<input asp-for="Ho" readonly="readonly" class="form-control" readonly="readonly" />
+						</div>
+						<span asp-validation-for="Ho" class="text-danger"></span>
+					</div>
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label asp-for="Ten"></label>
+						</div>
+						<div class="col-5">
+							<input asp-for="Ten" readonly="readonly" class="form-control" readonly="readonly" />
+						</div>
+						<span asp-validation-for="Ten" class="text-danger"></span>
+					</div>
+					<div class="mb-3">
+						<input id="bt_white" type="submit" class="btn btn-primary" value="Mở khóa" onclick="return confirm('Bạn có chắc chắn muốn mở khóa người dùng này khộng?');" />
+						<a asp-action="Index" class="btn btn-primary">Trở về danh sách người dùng</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+	}
+}
+

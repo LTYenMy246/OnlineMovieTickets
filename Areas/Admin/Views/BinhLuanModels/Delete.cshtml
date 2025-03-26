@@ -1,0 +1,51 @@
+﻿@model OnlineMovieTicket.Models.BinhLuanModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4>Xóa bình luận</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    <lable>Mã người bình luận:</lable>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NguoiBinhLuan.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    <lable>Tên người bình luận:</lable>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TenNguoiBinhLuan)
+                </dd>
+                <dt class="col-sm-2">
+                    <lable>Ngày đăng:</lable>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NgayBinhLuan)
+                </dd>
+                <dt class="col-sm-2">
+                    <lable>Nội dung:</lable>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NoiDungBinhLuan)
+                </dd>         
+                <dt class="col-sm-2">
+                    <lable>Phim:</lable>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Phim.TenPhim)
+                </dd>
+            </dl>
+        </div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="MaBinhLuan" />
+            <input type="submit" value="Xóa" class="btn btn-primary" /> |
+            <a asp-action="Index" class="btn btn-primary">Trở về danh sách bình luận</a>
+        </form>
+    </div>
+</div>

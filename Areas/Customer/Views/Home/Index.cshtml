@@ -1,0 +1,201 @@
+﻿@model IEnumerable<OnlineMovieTicket.Models.PhimModel>
+
+@{
+    var currentPage = ViewBag.CurrentPage as int? ?? 1;
+    var totalPages = ViewBag.TotalPages as int? ?? 1;
+}
+
+<!-- Start -->
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <video class="w-100" style="height: 550px; border: 1px hidden;" src="~/images/doraemon movie 43 trailer - after credit [ doraemon 2024 movie ].mp4" type="video/mp4" controls autoplay muted loop></video>
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 920px;">
+                        <h4 class="text-white text-uppercase mb-md-3" style="font-size: 18px;">
+                            Doraemon: Nobita và bản giao hưởng địa cầu
+                        </h4>
+                        <h1 class="display-4 text-white mb-md-4" style="font-size: 24px;"></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <video class="w-100" style="height: 550px; border: 1px hidden;" src="~/images/minion4 ‐ Được tạo bằng Clipchamp.mp4" type="video/mp4" controls autoplay muted loop></video>
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 920px;">
+                        <h4 class="text-white text-uppercase mb-md-3" style="font-size: 18px;">Kẻ trộm mặt trăng 4</h4>
+                        <h1 class="display-4 text-white mb-md-4" style="font-size: 24px;"></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <video class="w-100" style="height: 550px; border: 1px hidden;" src="~/images/KunfuPanda.mp4" type="video/mp4" controls autoplay muted loop></video>
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 920px;">
+                        <h4 class="text-white text-uppercase mb-md-3" style="font-size: 18px;">Kung Fu Panda</h4>
+                        <h1 class="display-4 text-white mb-md-4" style="font-size: 24px;"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <div class="btn btn-dark" style="width: 35px; height: 35px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <div class="btn btn-dark" style="width: 35px; height: 35px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- Tìm kiếm -->
+<div class="container-fluid booking mt-5 pb-5">
+    <div class="container pb-5">
+        <div class="bg-light shadow" style="padding: 30px;">
+            <div class="row align-items-center" style="min-height: 60px;">
+                <div class="col-md-12">
+                    <form method="get" action="@Url.Action("Index")">
+                        <div class="input-group">
+                            <input type="text" name="searchString" class="form-control" placeholder="Tìm kiếm phim..." value="@ViewBag.searchString" />
+                            <div class="input-group-append col-md-2">
+                                <button type="submit" class="btn btn-primary btn-block" style="height: 47px; margin-top: -2px;">Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Phim nổi bật -->
+<div class="container-fluid py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative" style="width: 100%; height: 700px; overflow: hidden;">
+                    <img class="position-absolute w-100 h-100" src="~/images/Noibat3.jpg">
+                </div>
+            </div>           
+            <div class="col-lg-6 pt-5 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-primary text-uppercase">Phim nổi bật tháng này</h6>
+                    <h1 class="mb-3">DESPICABLE ME: KẺ TRỘM MẶT TRĂNG 4</h1>
+                    <p>Gru, Lucy, Margo, Edith và Agnes chào đón thành viên mới đến với gia đình, Gru Jr., kẻ đang có ý định hành hạ bố mình.
+                        Gru phải đối mặt với kẻ thù mới là Maxime Le Mal và bạn gái Valentina, còn cả gia đình buộc phải chạy trốn.</p>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <img class="img-fluid" src="~/images/Noibat1.jpg" alt="" style="object-fit: cover; height: 150px;">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="~/images/Noibac2.jpg" alt="" style="object-fit: cover; height: 150px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hiển thị phim -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
+            <h1>Danh sách phim</h1>
+        </div>
+        <div class="row">
+            @foreach (var movie in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white position-relative overflow-hidden mb-2">
+                        <img class="img-fluid w-100" src="@movie.AnhPhim" alt="@movie.TenPhim" style="object-fit: cover; height: 500px;" />
+                        <div class="p-2 d-flex flex-column justify-content-between" style="height: 190px;">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-globe text-primary mr-2"></i>@movie.QuocGia</small>
+                                <small class="m-0"><i class="fa fa-clock text-primary mr-2"></i>@movie.ThoiLuong</small>
+                                <small class="m-0"><i class="fa fa-play-circle text-primary mr-2"></i>@movie.NgayKhoiChieu.ToString("dd/MM/yyyy")</small>
+                            </div>
+                            <div class="text-center py-3">
+                                <h5 class="text-truncate" style="text-align: center; word-wrap: break-word; white-space: normal;">@movie.TenPhim</h5>
+                                <a href="@Url.Action("ChiTietPhim", "Home", new { id = movie.MaPhim })" class="btn btn-primary mt-2">Chi tiết</a>
+                                <a href="@((movie.TinhTrang) ? "/Customer/Home/DatVe" : "#")"
+                                   class="btn @(movie.TinhTrang ? "btn-primary" : "btn-secondary") mt-2"
+                                   onclick="if(!@movie.TinhTrang) { event.preventDefault(); alert('Chưa đặt được'); }">
+                                    @(movie.TinhTrang ? "Đặt vé" : "Chưa đặt được")
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Phân trang -->
+        <div class="pagination-container text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    @if (currentPage > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { searchString = ViewBag.SearchString, page = currentPage - 1 })" aria-label="Previous">
+                                <span aria-hidden="true">« Trước</span>
+                            </a>
+                        </li>
+                    }
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i == currentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { searchString = ViewBag.SearchString, page = i })">@i</a>
+                        </li>
+                    }
+                    @if (currentPage < totalPages)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { searchString = ViewBag.SearchString, page = currentPage + 1 })" aria-label="Next">
+                                <span aria-hidden="true">Tiếp theo »</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn-primary {
+        background-color: #7ab730;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn-primary:hover {
+            background-color: #659c22;
+            transform: scale(1.05);
+        }
+
+        .btn-primary:focus {
+            outline: none; 
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .carousel-item{
+        background-color: #b8f765;
+    }
+</style>
+

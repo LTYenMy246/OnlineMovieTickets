@@ -1,0 +1,30 @@
+﻿@model OnlineMovieTicket.Models.GheSuatChieuModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4>Tạo Ghế cho Suất chiếu</h4>
+            <hr />
+            <form asp-action="Create" method="post">
+                <div class="form-group">
+                    <label for="suatChieuSelect">Chọn suất chiếu</label>
+                    <select asp-for="MaSuatChieu" asp-items="ViewBag.SuatChieuList" class="form-control" id="suatChieuSelect">
+                        <option value="">Chọn suất chiếu</option>
+                    </select>
+                    <span asp-validation-for="MaSuatChieu" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Tạo ghế suất chiếu</button> |
+                <a asp-action="Index" class="btn btn-primary">Trở về danh sách ghế của suất chiếu</a>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

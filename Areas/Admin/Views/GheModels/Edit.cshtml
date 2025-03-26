@@ -1,0 +1,42 @@
+﻿@model OnlineMovieTicket.Models.GheModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chỉnh sửa ghế</h4>
+            <form asp-action="Edit" method="post" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaGhe" />
+                <div class="row">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Tên ghế</label>
+                        <div class="col-sm-9">
+                            <label asp-for="TenGhe" class="control-label"></label>
+                            <input asp-for="TenGhe" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Tên phòng</label>
+                        <div class="col-sm-9">
+                            <label asp-for="MaPhong" class="control-label"></label>
+                            <select asp-for="MaPhong" class="form-control" asp-items="ViewBag.MaPhong"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Lưu" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách ghế</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

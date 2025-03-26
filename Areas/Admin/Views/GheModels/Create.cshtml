@@ -1,0 +1,43 @@
+﻿@model OnlineMovieTicket.Models.GheModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tạo ghế mới</h4>
+            <form asp-action="Create" method="post" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="TenGhe">Tên Ghế</label>
+                    <input type="text" class="form-control" id="TenGhe" name="TenGhe" required>
+                    <span asp-validation-for="TenGhe" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="SoLuong">Số Lượng Ghế</label>
+                    <input type="number" class="form-control" id="SoLuong" name="SoLuong" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaPhong" class="control-label"></label>
+                    <select asp-for="MaPhong" class ="form-control" asp-items="ViewBag.MaPhong"></select>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Tạo" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách ghế</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

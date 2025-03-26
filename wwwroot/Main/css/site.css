@@ -1,0 +1,70 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn {
+    border-radius: 5px;
+    font-size: 16px; 
+    padding: 12px 20px; 
+    text-align: center;
+    display: inline-block; 
+    margin: 5px; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.pagination-container {
+    text-align: right; 
+    margin-top: 20px; 
+}
+
+.pagination {
+    display: inline-flex; 
+}
+
+.pagination-list {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.page-item {
+    margin: 0 2px; 
+}
+
+    .page-item.active .btn {
+        background-color: #007bff; 
+        color: white; 
+        border: 1px solid #007bff; 
+    }
+
+    .page-item .btn {
+        border-radius: 0; 
+    }
+
+.comment-box {
+    border: 1px solid #4bab35; /* ???ng vi?n khung */
+    border-radius: 5px; /* Bo góc cho khung */
+    padding: 7px; /* Kho?ng cách bên trong khung */
+    margin: 10px 0; /* Kho?ng cách gi?a các bình lu?n */
+    background-color: #fcfcfc; /* Màu n?n khung */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Hi?u ?ng ?? bóng */
+}

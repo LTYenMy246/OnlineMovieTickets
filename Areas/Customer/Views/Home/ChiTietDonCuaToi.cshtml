@@ -1,0 +1,129 @@
+﻿@model OnlineMovieTicket.Models.DonDatVeModel
+@{
+    ViewData["Title"] = "ChiTietDonCuaToi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container my-5">
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title">Thông Tin Đơn</h3>
+            <hr style="border: 1px solid black;" />
+            <p><strong>Mã Đơn:</strong> @Model.MaDonDatVe</p>
+            <p><strong>Tên Người Đặt:</strong> @Model.NguoiDung.UserName</p>
+            <p><strong>Ngày Đặt:</strong> @Model.NgayDat.ToString("dd/MM/yyyy")</p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title">Chi tiết các vé</h3>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Mã ghế của suất chiếu</th>
+                        <th scope="col">Phim</th>
+                        <th scope="col">Rạp</th>
+                        <th scope="col">Phòng</th>
+                        <th scope="col">Ngày chiếu</th>
+                        <th scope="col">Suất chiếu</th>
+                        <th scope="col">Ghế</th>
+                        <th scope="col">Giá vé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var chiTiet in ViewBag.ChiTietDatVe)
+                    {
+                        <tr>
+                            <td>@chiTiet.MaChiTietDatVe</td>
+                            <td>@chiTiet.GheSuatChieu.SuatChieu.Phim.TenPhim</td>
+                            <td>@chiTiet.GheSuatChieu.SuatChieu.Phong.Rap.TenRap</td>
+                            <td>@chiTiet.GheSuatChieu.SuatChieu.Phong.TenPhong</td>
+                            <td>@chiTiet.GheSuatChieu.SuatChieu.NgayChieu.NgayChieu.ToString("dd/MM/yyyy")</td>
+                            <td>@chiTiet.GheSuatChieu.SuatChieu.ThoiGianChieu.ThoiGianChieu</td>
+                            <td>@chiTiet.GheSuatChieu.Ghe.TenGhe</td>
+                            <td>@chiTiet.GiaVe.ToString("N0") VND</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-right mt-3">
+        <a href="@Url.Action("DonCuaToi", "Home")" class="btn btn-secondary btn-lg">
+            <i class="fa-solid fa-arrow-left"></i> Trở về danh sách Đơn của bạn
+        </a>
+    </div>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Màu nền tổng thể */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Canh giữa các nội dung */
+    }
+    .container h2 {
+        font-weight: bold;
+        color: #343a40;
+        letter-spacing: 1px;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #fff;
+        border: none;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #1a8234;
+    }
+
+    .table {
+        margin-top: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .table thead {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        padding: 12px;
+    }
+
+    .btn {
+        border-radius: 30px;
+        font-size: 1rem;
+    }
+
+    .btn-secondary {
+        background-color: #7ab730;
+        border: none;
+        transition: background-color 0.3s;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .btn i {
+        margin-right: 5px;
+    }
+</style>
+
+

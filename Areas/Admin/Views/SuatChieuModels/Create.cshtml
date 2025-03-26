@@ -1,0 +1,51 @@
+﻿@model OnlineMovieTicket.Models.SuatChieuModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Tạo suất chiếu mới</h4>
+            <form asp-action="Create" method="post" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="MaPhim" class="control-label"></label>
+                    <select asp-for="MaPhim" class="form-control" asp-items="ViewBag.MaPhim"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaPhong" class="control-label"></label>
+                    <select asp-for="MaPhong" class="form-control" asp-items="ViewBag.MaPhong"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaNgayChieu" class="control-label"></label>
+                    <select asp-for="MaNgayChieu" class="form-control" asp-items="ViewBag.MaNgayChieu"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaThoiGianChieu" class="control-label"></label>
+                    <select asp-for="MaThoiGianChieu" class="form-control" asp-items="ViewBag.MaThoiGianChieu"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GiaVeSuatChieu" class="control-label"></label>
+                    <input asp-for="GiaVeSuatChieu" class="form-control" />
+                    <span asp-validation-for="GiaVeSuatChieu" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Tạo" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách suất chiếu</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+

@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Trang chủ</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <div class="btn-wrapper">
+                            <a  asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-primary text-white me-0"><i class="icon-download"></i>Quay lại website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content tab-content-basic">
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="statistics-details d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p class="statistics-title">--------------</p>
+                                        <h3 class="rate-percentage"><i class="fa fa-star"></i></h3>
+                                    </div>
+                                    <div>
+                                        <p class="statistics-title">--------------</p>
+                                        <h3 class="rate-percentage"><i class="fa fa-video-camera"></i></h3>
+                                    </div>
+                                    <div>
+                                        <p class="statistics-title">--------------</p>
+                                        <h3 class="rate-percentage"><i class="fa fa-camera"></i></h3>
+                                    </div>
+                                    <div class="d-none d-md-block">
+                                        <p class="statistics-title">--------------</p>
+                                        <h3 class="rate-percentage"><i class="fa fa-bullhorn"></i></h3>
+                                    </div>
+                                    <div class="d-none d-md-block">
+                                        <p class="statistics-title">--------------</p>
+                                        <h3 class="rate-percentage"><i class="fa fa-heart"></i></h3>
+                                    </div>
+                                    <div class="d-none d-md-block">
+                                        <p class="statistics-title">--------------</p>
+                                        <h3 class="rate-percentage"><i class="fa fa-trophy"></i></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 d-flex flex-column">
+                                <div class="row flex-grow">
+                                    <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                        <div class="card card-rounded">
+                                            <div class="card-body">
+                                                <h5>Ghi chú</h5>
+                                                <textarea id="note" class="form-control" rows="10" style="resize: vertical; min-height: 150px;" placeholder="Nhập ghi chú tại đây..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 d-flex flex-column">
+                                <div class="row flex-grow">
+                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                        <div class="card bg-primary card-rounded">
+                                            <div class="card-body pb-0">
+                                                <h4 class="card-title card-title-dash text-white mb-4"></h4>
+                                                <div class="row">  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                                        <div class="card card-rounded">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">                                                           
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="d-flex justify-content-between align-items-center">                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const noteTextarea = document.getElementById("note");
+        if (localStorage.getItem("note")) {
+            noteTextarea.value = localStorage.getItem("note");
+        }
+        noteTextarea.addEventListener("input", function() {
+            localStorage.setItem("note", noteTextarea.value);
+        });
+    });
+</script>

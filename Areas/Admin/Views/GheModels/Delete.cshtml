@@ -1,0 +1,17 @@
+﻿@* @model OnlineMovieTicket.Models.GheModel *@
+@model IEnumerable<OnlineMovieTicket.Models.GheModel>
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h3>Xác nhận xóa tất cả ghế của phòng </h3>
+<hr />
+<h4>Mã phòng: @Model.First().MaPhong</h4>
+<h4>Tên phòng: @Model.First().Phong.TenPhong</h4>
+<hr />
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="maPhong" value="@Model.First().MaPhong" />
+    <button type="submit" class="btn btn-danger">Xóa tất cả ghế</button> |
+    <a asp-action="Index" class="btn btn-primary">Trở về danh sách ghế</a>
+</form>

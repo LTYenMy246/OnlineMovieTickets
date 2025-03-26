@@ -1,0 +1,74 @@
+﻿@model IEnumerable<OnlineMovieTicket.Models.PhimModel>
+
+@{
+    ViewData["Title"] = "DSPhimSapChieu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h2>
+                <i class="fa-solid fa-film"></i>
+                Danh sách phim sắp chiếu
+            </h2>
+            <hr style="border: 2px solid;" />
+        </div>
+        <div class="row">
+            @if (ViewBag.UpcomingMovies != null)
+            {
+                foreach (var movie in ViewBag.UpcomingMovies as List<PhimModel>)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                        <div class="team-item bg-white mb-4">
+                            <div class="team-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="/@Url.Content(movie.AnhPhim)" alt="" style="object-fit: cover; height: 350px;">
+                                <div class="team-social">
+                                    <a class="btn btn-outline-primary btn-square" href="@Url.Action("ChiTietPhim", "Home", new { id = movie.MaPhim })">
+                                        <i class="fa-solid fa-video"></i>Chi tiết
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <h5 class="text-truncate">@movie.TenPhim</h5>
+                                <a href="@((movie.TinhTrang) ? "/Customer/Home/DatVe" : "#")"
+                                   class="btn @(movie.TinhTrang ? "btn-primary" : "btn-secondary") mt-2"
+                                   onclick="if(!@movie.TinhTrang) { event.preventDefault(); alert('Chưa đặt được'); }">
+                                    @(movie.TinhTrang ? "Đặt vé" : "Chưa đặt được")
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn-primary {
+        background-color: #7ab730;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .btn-primary:hover {
+            background-color: #659c22;
+            transform: scale(1.05);
+        }
+
+        .btn-primary:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+</style>

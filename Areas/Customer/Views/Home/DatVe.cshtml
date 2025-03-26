@@ -1,0 +1,253 @@
+﻿@model IEnumerable<OnlineMovieTicket.Models.PhimModel>
+@{
+    ViewData["Title"] = "DatVe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<div>
+    <label for="phimSelect">Chọn Phim:</label>
+    <select id="phimSelect" name="phimSelect">
+        <option value="">-- Chọn Phim --</option>
+        @foreach (var phim in ViewBag.DanhSachPhim)
+        {
+            <option value="@phim.MaPhim">@phim.TenPhim</option>
+        }
+    </select> 
+</div>
+<div>
+    <label for="ngayChieuSelect">Chọn Ngày Chiếu:</label>
+    <select id="ngayChieuSelect" name="ngayChieuSelect">
+        <option value="">-- Chọn Ngày Chiếu --</option>
+        @foreach (var ngay in ViewBag.DanhSachNgayChieu)
+        {
+            <option value="@ngay.MaNgayChieu">@ngay.NgayChieu.ToString("dd/MM/yyyy")</option>
+        }
+    </select>
+</div>
+
+<hr />
+<!-- Suat chieu theo rap -->
+<div id="rapVaSuatChieuContainer">
+    <h6>Danh sách suất chiếu:</h6>
+    <table id="rapVaSuatChieuTable" class="table">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dữ liệu sẽ được thêm vào đây thông qua AJAX -->
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function layRapVaSuatChieu() {
+                var maPhim = $('#phimSelect').val();
+                var maNgayChieu = $('#ngayChieuSelect').val();
+
+                if (maPhim && maNgayChieu) {
+                    $.ajax({
+                        url: '/Customer/Home/LayRapVaSuatChieu',
+                        type: 'POST',
+                        data: {
+                            maPhim: maPhim,
+                            maNgayChieu: maNgayChieu
+                        },
+                        success: function(data) {
+                            var tbody = $('#rapVaSuatChieuTable tbody');
+                            tbody.empty(); // Xóa dữ liệu cũ
+                            if (data.length > 0) {
+                                var groupedData = {};
+                                // Nhóm suất chiếu theo rạp
+                                $.each(data, function(index, item) {
+                                    if (!groupedData[item.tenRap]) {
+                                        groupedData[item.tenRap] = [];
+                                    }
+                                    groupedData[item.tenRap].push(item);
+                                });
+                                // Thêm dữ liệu vào bảng
+                                $.each(groupedData, function(tenRap, suatChieuList) {
+                                    var rowHtml = '<tr><td>' + tenRap + '</td>';
+
+                                    $.each(suatChieuList, function(index, suatChieu) {
+                                        rowHtml += '<td><a href="/Customer/Home/DonDatVe?suatChieuId=' + suatChieu.suatChieuId + '" class="btn btn-primary">' + suatChieu.thoiGianChieu + '</a></td>';
+                                    });
+                                    rowHtml += '</tr>';
+                                    tbody.append(rowHtml);
+                                });
+                            } else {
+                                tbody.append('<tr><td colspan="3">Không có suất chiếu nào.</td></tr>');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(error);
+                            alert('Đã xảy ra lỗi khi lấy thông tin.');
+                        }
+                    });
+                }
+            }
+            $('#phimSelect, #ngayChieuSelect').change(function() {
+                layRapVaSuatChieu();
+            });
+            $('.datVeBtn').click(function () {
+                var maPhim = $(this).data('ma-phim');
+                $('#phimSelect').val(maPhim).trigger('change');
+            });
+        });
+    </script>
+}
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#rapVaSuatChieuContainer {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+div > label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 14px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-primary {
+    background-color: #abf6f7;
+    border-color: #1f3d3d;
+    color: black;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 5px;
+
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 10px;
+    border-bottom: 2px solid #dee2e6;
+    text-align: left;
+}
+
+.table tbody td {
+    padding: 5px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.calendar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.calendar button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.calendar button:hover {
+    color: #0056b3;
+}
+
+.calendar .date {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.calendar .days {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.calendar .day {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.calendar .day:hover {
+    background-color: #e9ecef;
+}
+
+.calendar .day.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+#phimSelect {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+    margin-right: 10px;
+    display: inline-block;
+    margin-left: 48px;
+}
+#ngayChieuSelect {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 200px;
+    margin-right: 10px;
+    display: inline-block;
+}
+</style>

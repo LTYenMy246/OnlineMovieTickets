@@ -1,0 +1,83 @@
+﻿@model OnlineMovieTicket.Models.SuKienModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chỉnh sửa sự kiện</h4>
+            <form asp-action="Edit" method="post" enctype="multipart/form-data" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaSuKien" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ảnh sự kiện</label>
+                            <div class="col-sm-9">
+                                <!-- Hiển thị ảnh hiện tại nếu có -->
+                                @if (Model.AnhSuKien != null)
+                                {
+                                    @*<img src="/@Url.Content(Model.AnhPhim)" alt="Ảnh phim" width="150" height="200" /> *@
+                                    <p>Ảnh hiện tại: <a href="/@Url.Content(Model.AnhSuKien)" target="_blank">Xem ảnh</a></p>
+                                }
+
+                                <!-- Cho phép người dùng chọn lại file nếu muốn thay đổi -->
+                                <input asp-for="AnhSuKien" type="file" name="anhSuKien" class="form-control" accept="image/*" />
+                                <span asp-validation-for="AnhSuKien" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Tên sự kiện</label>
+                            <div class="col-sm-9">
+                                <input asp-for="TenSuKien" class="form-control" />
+                                <span asp-validation-for="TenSuKien" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Nội dung sự kiện</label>
+                            <div class="col-sm-9">
+                                <input asp-for="NoiDungSuKien" class="form-control" />
+                                <span asp-validation-for="NoiDungSuKien" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ngày đăng sự kiện</label>
+                            <div class="col-sm-9">
+                                <input asp-for="NgayDangSuKien" class="form-control" />
+                                <span asp-validation-for="NgayDangSuKien" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phim</label>
+                            <div class="col-sm-9">
+                                <select asp-for="MaPhim" class="form-control" asp-items="ViewBag.MaPhim"></select>
+                                <span asp-validation-for="MaPhim" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Lưu" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách sự kiện</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,122 @@
+﻿@model OnlineMovieTicket.Models.ThanhToanViewModel
+
+@{
+    ViewData["Title"] = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<@if (ViewBag.ThanhToanMessage != null)
+{
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @ViewBag.ThanhToanMessage
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+        <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+        </div>
+}
+<div class="container mt-5 payment-container">
+    <h2>Thông tin thanh toán</h2>
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+        </div>
+        <div class="card-body payment-details">
+            <p><strong>Tên phim:</strong> @Model.TenPhim</p>
+            <p><strong>Ngày đặt:</strong> @Model.NgayDat.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Người đặt:</strong> @Model.NguoiDat</p>
+            <p><strong>Ghế đã chọn:</strong> @Model.GheDaChon</p>
+            <p><strong>Tổng tiền:</strong> @String.Format("{0:N0} VND", Model.TongTien)</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-lg me-2">Trở về trang chủ</a>
+        <form action="@Url.Action("XacNhan", "Home")" method="post" class="d-inline">
+            <button type="submit" class="btn btn-success btn-lg">Thanh toán trực tiếp</button>
+        </form>
+        <form action="@Url.Action("XacNhanThanhToan", "Home")" method="post" class="d-inline">
+            <button type="submit" class="btn btn-success btn-lg">Thanh toán VNPay</button>
+        </form>
+        <a href="@Url.Action("DonCuaToi", "Home")" class="btn btn-secondary btn-lg me-2">Đơn của bạn</a>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; 
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card{
+        border: 1px solid black;
+    }
+
+    .payment-container {
+        max-width: 1000px;
+        margin: 30px auto;
+        background-color: #ffffff; 
+        padding: 30px; 
+        border-radius: 15px; 
+        border: 1px solid #e4f4db;
+    }
+
+        .payment-container h2 {
+            text-align: center; 
+            margin-bottom: 20px;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+    .payment-details p {
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 1.6;
+        color: #444;
+    }
+
+    .payment-details strong {
+        color: black;
+    }
+
+    .btn-tt {
+    font-size: 1.0rem;
+    padding: 10px 20px; 
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+.btn-tt:hover {
+    transform: translateY(-2px);    
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border-radius: 25px;
+}
+
+.btn-success {
+    background-color: #7ab730; 
+    color: #fff; 
+    border-radius: 25px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+</style>

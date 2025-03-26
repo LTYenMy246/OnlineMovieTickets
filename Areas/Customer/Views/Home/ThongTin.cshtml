@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "ThongTin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="about-us">
+    <div class="container">
+        <div class="intro-section">
+            <h2>Thông tin về KNCinema</h2>
+            <p>
+                KN Cinema là hệ thống rạp chiếu phim hiện đại, mang đến cho khách hàng trải nghiệm điện ảnh đỉnh cao với những bộ phim đa dạng từ bom tấn quốc tế đến phim nội địa.
+                Với sứ mệnh “Mang điện ảnh đến với mọi người”, chúng tôi không ngừng nâng cao chất lượng dịch vụ, đáp ứng mọi nhu cầu của khách hàng.
+            </p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-left">
+                <h3>Rạp Chiếu Hiện Đại</h3>
+                <p>KN Cinema được trang bị những công nghệ tiên tiến nhất, bao gồm hệ thống âm thanh Dolby Atmos và màn hình IMAX, mang lại trải nghiệm thị giác và thính giác vượt trội cho người xem.</p>
+                <p>Hệ thống phòng chiếu với các tiêu chuẩn quốc tế, ghế ngồi êm ái, đa dạng và phục vụ tận tình.</p>
+
+                <h3>Phim và Sự Kiện Đặc Sắc</h3>
+                <p>Chúng tôi liên tục cập nhật những bộ phim mới nhất, từ các bom tấn quốc tế cho đến các tác phẩm điện ảnh trong nước, mang đến cho bạn trải nghiệm tuyệt vời nhất mỗi lần ghé thăm.</p>
+                <p>KN Cinema còn tổ chức nhiều sự kiện hấp dẫn như buổi công chiếu đặc biệt, giao lưu với diễn viên và đạo diễn nổi tiếng.</p>
+            </div>
+            <div class="about-right">
+                <img src="~/images/LogoKNCinema.png" alt="KN Cinema" />
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; 
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+    .about-us {
+        padding: 60px 20px;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .intro-section {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .intro-section h2 {
+        font-size: 36px;
+        color: #2c3e50;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .intro-section p {
+        font-size: 18px;
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .about-left {
+        flex: 1;
+        padding-right: 40px;
+    }
+
+    .about-left h3 {
+        font-size: 28px;
+        color: #34495e;
+        margin-bottom: 15px;
+    }
+
+    .about-left p {
+        font-size: 16px;
+        color: #7f8c8d;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .about-right {
+        flex: 1;
+        text-align: center;
+    }
+
+    .about-right img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+

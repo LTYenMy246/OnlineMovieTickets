@@ -1,0 +1,70 @@
+﻿@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Application</title>
+    <link rel="stylesheet" href="~/Main/css/site.css" />
+    <link href="~/Main/css/Login.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/Main/js/Login.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js*/"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html> *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>KN Cinema</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/feather/feather.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/typicons/typicons.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/Manager/src/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Manager/src/assets/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/Manager/src/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller">
+        @RenderBody();
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/Manager/src/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Manager/src/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/Manager/src/assets/js/off-canvas.js"></script>
+    <script src="~/Manager/src/assets/js/template.js"></script>
+    <script src="~/Manager/src/assets/js/settings.js"></script>
+    <script src="~/Manager/src/assets/js/hoverable-collapse.js"></script>
+    <script src="~/Manager/src/assets/js/todolist.js"></script>
+    <!-- endinject -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

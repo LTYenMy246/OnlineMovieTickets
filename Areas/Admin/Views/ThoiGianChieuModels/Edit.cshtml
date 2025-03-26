@@ -1,0 +1,38 @@
+﻿@model OnlineMovieTicket.Models.ThoiGianChieuModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chỉnh sửa thời gian chiếu</h4>
+            <form asp-action="Edit" method="post" class="form-sample">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MaThoiGianChieu" />
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <label asp-for="ThoiGianChieu" class="control-label"></label>
+                            <input asp-for="ThoiGianChieu" class="form-control" type="time" />
+                            <span asp-validation-for="ThoiGianChieu" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Lưu" class="btn btn-primary" /> |
+                        <a asp-action="Index" class="btn btn-primary">Trở về danh sách thời gian chiếu</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

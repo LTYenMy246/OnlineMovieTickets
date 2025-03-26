@@ -1,0 +1,89 @@
+﻿@model IEnumerable<OnlineMovieTicket.Models.DonDatVeModel>
+@{
+    ViewData["Title"] = "DonCuaToi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container my-5">
+    <h2 class="text-center text-uppercase mb-4">Danh sách đơn đặt vé</h2>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Mã Đơn Đặt Vé</th>
+                    <th scope="col">Tên Người Dùng</th>
+                    <th scope="col">Ngày Đặt</th>
+                    <th scope="col">Chi Tiết</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var don in Model)
+                {
+                    <tr>
+                        <td>@don.MaDonDatVe</td>
+                        <td>@don.NguoiDung.UserName</td> <!-- Hiển thị tên người dùng -->
+                        <td>@don.NgayDat.ToString("dd/MM/yyyy")</td> <!-- Hiển thị ngày đặt -->
+                        <td>
+                            <a asp-action="ChiTietDonCuaToi" asp-controller="Home" asp-route-id="@don.MaDonDatVe" class="btn btn-info">
+                                <i class="fa-solid fa-list"></i>Chi tiết
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Màu nền tổng thể */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Canh giữa các nội dung */
+    }
+    h2 {
+        font-weight: 700;
+        color: #333;
+        letter-spacing: 1px;
+    }
+
+    .table {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: 600;
+        }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .table td a.btn {
+        color: #fff;
+        font-weight: 500;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+        background-color: #7ab730;
+    }
+
+        .table td a.btn:hover {
+            background-color: #0056b3;
+        }
+
+    .table td a i {
+        margin-right: 5px;
+    }
+</style>

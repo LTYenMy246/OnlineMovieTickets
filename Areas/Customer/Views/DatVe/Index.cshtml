@@ -1,0 +1,67 @@
+﻿@model OnlineMovieTicket.Models.PhimModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Đặt Vé</h2>
+
+<form asp-action="DatVe" method="post">
+    <div>
+        <label>Chọn Rạp:</label>
+        <select name="rapId" id="rapSelect" onchange="loadRooms(this.value)">
+            <option value="">--Chọn Rạp--</option>
+            @foreach (var rap in ViewBag.Raps)
+            {
+                <option value="@rap.MaRap">@rap.TenRap</option>
+            }
+        </select>
+    </div>
+
+    <div id="roomContainer"></div>
+
+    <button type="submit" class="btn btn-primary">Đặt Vé</button>
+</form>
+
+<script>
+    function loadRooms(rapId) {
+        $.ajax({
+            url: '@Url.Action("GetRooms", "DatVe")',
+            type: 'GET',
+            data: { rapId: rapId },
+            success: function (data) {
+                let roomContainer = $('#roomContainer');
+                roomContainer.empty();
+                $.each(data, function (index, room) {
+                    roomContainer.append(`
+                    <div>
+                        <label>Chọn Phòng:</label>
+                        <input type="radio" name="phongId" value="${room.MaPhong}" /> ${room.TenPhong}
+                        <button type="button" onclick="loadSeats(${room.MaPhong})">Xem Ghế</button>
+                        <div class="seatContainer" id="seatContainer${room.MaPhong}"></div>
+                    </div>
+                    `);
+                });
+            }
+        });
+    }
+
+    function loadSeats(phongId) {
+        $.ajax({
+            url: '@Url.Action("GetSeats", "DatVe")',
+            type: 'GET',
+            data: { phongId: phongId },
+            success: function (data) {
+                let seatContainer = $(`#seatContainer${phongId}`);
+                seatContainer.empty();
+                $.each(data, function (index, seat) {
+                    seatContainer.append(`
+                     <input type="checkbox" name="gheIds" value="${seat.MaGhe}" ${seat.TrangThaiGhe ? 'disabled' : ''} /> ${seat.TenGhe} ${seat.TrangThaiGhe ? '(Đã đặt)' : ''}
+                    `);
+                });
+            }
+        });
+
+</script>
+}
+

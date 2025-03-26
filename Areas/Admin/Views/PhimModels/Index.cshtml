@@ -1,0 +1,298 @@
+﻿@model IEnumerable<OnlineMovieTicket.Models.PhimModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Danh sách phim</h4>
+            <div class="nav-item">                
+                <form asp-action="Index" method="get">
+                    <label for="pageSize">Hiện số dòng:</label>
+                    <select name="pageSize" id="pageSize" onchange="this.form.submit()">
+                        <option value="100"></option>
+                        <option value="6">Mặc định</option>
+                        <option value="10">10</option>
+                        <option value="30">30</option>
+                        <option value="50">Tất cả</option>
+                    </select>
+                    |
+                    <button onclick="exportCSV()" class="btn btn-outline-primary btn-sm">Xuất CSV</button>
+                    <button onclick="exportExcel()" class="btn btn-outline-primary btn-sm">Xuất Excel</button>
+                    <hr />
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i> <!-- Icon tìm kiếm -->
+                        </span>
+                        <input type="text" name="searchTen" class="form-control" placeholder="Nhập tên phim để tìm kiếm" value="@ViewData["CurrentFilter"]" />
+                        <select name="isReleased">
+                            <option value="" style="text-align:center">Tất cả</option>
+                            <option style="text-align:center" value="true @(ViewData["IsReleasedFilter"]?.ToString() == "true" ? "selected" : "")">Đã công chiếu</option>
+                            <option style="text-align:center" value="false @(ViewData["IsReleasedFilter"]?.ToString() == "false" ? "selected" : "")">Chưa công chiếu</option>
+                        </select>                       
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                        </div>                    
+                    </div>                  
+                </form>
+                <hr />
+                <p>
+                    <a asp-action="Create" class="btn btn-primary btn-sm">Tạo mới</a>
+                </p>
+               
+            </div>            
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Ảnh phim</th>
+                            <th>Trailer phim </th>
+                            <th>Tên phim </th>
+                            <th>Tình trạng</th>
+                            <th>Nội dung phim</th>
+                            <th>Thể loại</th>
+                            <th>Quốc gia</th>
+                            <th>Đạo diễn</th>
+                            <th>Diễn viên</th>
+                            <th>Thời lượng phim</th>
+                            <th>Ngày khởi chiếu</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/@item.AnhPhim" alt="Ảnh phim" style="max-width: 260px; max-height: 220px;" />
+                                </td>
+                                <td>
+                                    <button class="btn btn-light btn-sm show-trailer" data-url="@item.TrailerPhim">Xem Trailer</button>
+                                    @if (!string.IsNullOrEmpty(item.TrailerPhim))
+                                    {                                      
+                                        <div id="trailer-modal" class="modal">
+                                            <div class="modal-content">
+                                                <span class="close">&times;</span>
+                                                <iframe id="trailer-iframe" width="100%" height="100%"
+                                                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowfullscreen>
+                                                </iframe>
+                                                <a asp-action="Index" class="btn btn-outline-primary btn-sm">Trở về danh sách phim</a>
+                                            </div>
+                                        </div>
+
+                                        <script>   
+                                            document.querySelectorAll(".show-trailer").forEach(function (button) {
+                                                button.addEventListener("click", function () {
+                                                    var trailerUrl = button.getAttribute("data-url");
+                                                    var videoId = extractYouTubeVideoId(trailerUrl);
+
+                                                    if (videoId) {
+                                                        var embedUrl = "https://www.youtube.com/embed/" + videoId;
+                                                        document.getElementById("trailer-iframe").src = embedUrl;
+
+                                                        var modal = document.getElementById("trailer-modal");
+                                                        modal.style.display = "flex"; // Hiển thị modal
+
+                                                        var closeModal = document.getElementsByClassName("close")[0];
+                                                        closeModal.onclick = function () {
+                                                            modal.style.display = "none";
+                                                            document.getElementById("trailer-iframe").src = ""; // Dừng video
+                                                        }
+        
+                                                        window.onclick = function (event) {
+                                                            if (event.target == modal) {
+                                                                modal.style.display = "none";
+                                                                document.getElementById("trailer-iframe").src = ""; // Dừng video
+                                                            }
+                                                        }
+                                                    } else {
+                                                        alert("URL trailer không hợp lệ.");
+                                                    }
+                                                });
+                                            });
+
+                                            function extractYouTubeVideoId(url) {
+                                                var regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+                                                var match = url.match(regex);
+                                                return match ? match[1] : null;
+                                            }
+                                        </script>
+                                    }
+                                    else
+                                    {
+                                        <p>Không có trailer</p>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenPhim)
+                                </td>
+                                <td>
+                                    @if (item.TinhTrang)
+                                    {
+                                        <button class="btn btn-info btn-md">Công Chiếu</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-outline-dark btn-md">Chưa Công Chiếu</button>
+                                    }
+                                </td>
+                                <td>
+                                    <textarea readonly class="form-control" style="width: 250px; height: 90px; resize: none; overflow-y: auto; text-align: justify; padding-top: 25px;">
+                                        @item.NoiDungPhim.Trim()
+                                    </textarea>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TheLoai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QuocGia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DaoDien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DienVien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ThoiLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayKhoiChieu)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.MaPhim" class="btn btn-inverse-warning btn-sm" title="Chỉnh sửa">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.MaPhim" class="btn btn-inverse-success btn-sm" title="Chi Tiết">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.MaPhim" class="btn btn-inverse-danger btn-sm" title="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa phim này không?');">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr> 
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- Điều hướng phân trang -->
+            <div class="d-flex justify-content-end mt-3">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        @if ((int)ViewData["CurrentPage"] > 1)
+                        {
+                            <li class="page-item">
+                                <a class="btn btn-info btn-sm" asp-action="Index" asp-route-searchTen="@ViewData["CurrentFilter"]" asp-route-pageNumber="@( (int)ViewData["CurrentPage"] - 1 )">« </a>
+                            </li>
+                        }
+                        @for (int i = 1; i <= (int)ViewData["TotalPages"]; i++)
+                        {
+                            <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
+                                <a class="btn btn-primary btn-sm" asp-action="Index" asp-route-searchTen="@ViewData["CurrentFilter"]" asp-route-pageNumber="@i">@i</a>
+                            </li>
+                        }
+                        @if ((int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
+                        {
+                            <li class="page-item">
+                                <a class="btn btn-info btn-sm" asp-action="Index" asp-route-searchTen="@ViewData["CurrentFilter"]" asp-route-pageNumber="@( (int)ViewData["CurrentPage"] + 1 )">»</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>      
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<script>
+    function exportCSV() {
+        let table = document.getElementById('myTable');
+        let rows = Array.from(table.rows);
+
+        let csvContent = "data:text/csv;charset=utf-8,";
+
+        // Lấy tiêu đề
+        let headers = Array.from(rows[0].cells).map(cell => `"${cell.innerText}"`).join(",");
+        csvContent += headers + "\n";
+
+        // Lấy dữ liệu từ bảng
+        rows.slice(1).forEach(row => {
+            let rowData = Array.from(row.cells).map((cell) => {
+                let img = cell.querySelector('img');
+                let button = cell.querySelector('.show-trailer');
+                let textarea = cell.querySelector('textarea');
+
+                if (img) {
+                    return `"${img.src}"`; // Lấy URL của ảnh
+                }
+                if (button) {
+                    return `"${button.getAttribute('data-url')}"`; // Lấy đường dẫn trailer
+                }
+                if (textarea) {
+                    // Giới hạn độ dài nội dung
+                    let content = textarea.value.replace(/"/g, '""');
+                    if (content.length > 30) {
+                        content = content.substring(0, 30) + '...'; // Giới hạn độ dài
+                    }
+                    return `"${content}"`;
+                }
+                return `"${cell.innerText.replace(/"/g, '""')}"`; // Bọc nội dung ô
+            }).join(",");
+            csvContent += rowData + "\n";
+        });
+
+        // Tạo file CSV
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "movies.csv");
+        document.body.appendChild(link);
+        link.click();
+    }
+
+    function exportExcel() {
+        let table = document.getElementById('myTable');
+        let rows = Array.from(table.rows);
+
+        let data = [];
+
+        // Lấy tiêu đề
+        let headers = Array.from(rows[0].cells).map(cell => cell.innerText); // Không bao quanh bằng ""
+        data.push(headers);
+
+        // Lấy dữ liệu từ bảng
+        rows.slice(1).forEach(row => {
+            let rowData = Array.from(row.cells).map((cell) => {
+                let img = cell.querySelector('img');
+                let button = cell.querySelector('.show-trailer');
+                let textarea = cell.querySelector('textarea');
+
+                if (img) {
+                    return img.src; // Lấy URL của ảnh
+                }
+                if (button) {
+                    return button.getAttribute('data-url'); // Lấy đường dẫn trailer
+                }
+                if (textarea) {
+                    return textarea.value.replace(/"/g, '""'); // Lấy nội dung từ textarea
+                }
+                return cell.innerText; // Không bao quanh bằng ""
+            });
+            data.push(rowData);
+        });
+
+        // Chuyển đổi dữ liệu thành sheet
+        const ws = XLSX.utils.aoa_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Movies');
+
+        // Xuất file Excel
+        XLSX.writeFile(wb, 'movies.xlsx');
+    }
+</script>
+

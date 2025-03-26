@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Delete";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">Xóa vai trò</h4>
+			@if (!string.IsNullOrEmpty(ViewBag.DeleteRoleError))
+			{
+				<div class="alert alert-danger">@ViewBag.DeleteRoleError</div>
+			}
+			<form asp-action="Delete" method="post" id="roleForm" enctype="multipart/form-data">
+				<div class="p-4 rounded border fw-bold">
+					<div asp-validation-summary="ModelOnly" class="text-danger">
+					</div>
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label>Tên vai trò</label>
+						</div>
+						<div class="col-5">
+							<input id="name" name="name" readonly="readonly" value="@ViewBag.name" class="form-control" />
+						</div>
+					</div>
+					<div class="mb-3">
+						<input type="submit" class="btn btn-primary" value="Xóa vai trò" onclick="return confirm('Bạn có chắc chắn muốn xóa vai trò này?');" />
+						<a asp-action="Index" class="btn btn-primary" >Trở về danh sách vai trò</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+	}
+}
+
+

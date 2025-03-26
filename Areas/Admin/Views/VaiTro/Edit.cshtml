@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-12 grid-margin">
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">Chỉnh sửa vai trò</h4>
+			@if (!string.IsNullOrEmpty(ViewBag.message))
+			{
+				<div class="alert alert-danger">@ViewBag.message</div>
+			}
+
+			<form asp-action="Edit" method="post" id="roleForm" enctype="multipart/form-data">
+				<div class="p-4 rounded border fw-bold">
+					<div asp-validation-summary="ModelOnly" class="text-danger">
+					</div>
+					<br />
+					<div class="mb-3 row">
+						<div class="col-2">
+							<label>Tên vai trò</label>
+						</div>
+						<input type="hidden" value="@ViewBag.id" name="id" />
+						<div class="col-5">
+							<input id="name" name="name" required value="@ViewBag.name" class="form-control" />
+						</div>
+					</div>
+					<div class="mb-3">
+						<input type="submit" class="btn btn-RedShop" value="Lưu" />
+						<a asp-action="Index" class="btn btn-gold">Trở về danh sách vai trò</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+	}
+}
+
+
+
+

@@ -1,0 +1,165 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\DoAnNganh\\OnlineMovieTicket\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\admin\\views\\home\\thongkevetheophim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\admin\\views\\home\\thongkevetheophim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\admin\\views\\home\\thongkevetheorap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\admin\\views\\home\\thongkevetheorap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\admin\\views\\home\\thongkedoanhthutheophim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\admin\\views\\home\\thongkedoanhthutheophim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\customer\\views\\home\\chitietdoncuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\customer\\views\\home\\chitietdoncuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\customer\\views\\home\\doncuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\customer\\views\\home\\doncuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\customer\\views\\home\\datve.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\customer\\views\\home\\datve.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\areas\\customer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:areas\\customer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\models\\vnpaymentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:models\\vnpaymentrequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|c:\\doannganh\\onlinemovieticket\\models\\thanhtoanviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F365EC5-796A-47AB-8C5A-6B5425B9F4CE}|OnlineMovieTicket.csproj|solutionrelative:models\\thanhtoanviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ThongKeVeTheoRap.cshtml",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Admin\\Views\\Home\\ThongKeVeTheoRap.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Home\\ThongKeVeTheoRap.cshtml",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Admin\\Views\\Home\\ThongKeVeTheoRap.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Home\\ThongKeVeTheoRap.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T16:03:39.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ThongKeVeTheoPhim.cshtml",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Admin\\Views\\Home\\ThongKeVeTheoPhim.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Home\\ThongKeVeTheoPhim.cshtml",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Admin\\Views\\Home\\ThongKeVeTheoPhim.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Home\\ThongKeVeTheoPhim.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T16:03:19.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ThongKeDoanhThuTheoPhim.cshtml",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Admin\\Views\\Home\\ThongKeDoanhThuTheoPhim.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Home\\ThongKeDoanhThuTheoPhim.cshtml",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Admin\\Views\\Home\\ThongKeDoanhThuTheoPhim.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Home\\ThongKeDoanhThuTheoPhim.cshtml",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAJQAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T16:02:44.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChiTietDonCuaToi.cshtml",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Views\\Home\\ChiTietDonCuaToi.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Customer\\Views\\Home\\ChiTietDonCuaToi.cshtml",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Views\\Home\\ChiTietDonCuaToi.cshtml",
+              "RelativeToolTip": "Areas\\Customer\\Views\\Home\\ChiTietDonCuaToi.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADgAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T15:24:15.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DonCuaToi.cshtml",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Views\\Home\\DonCuaToi.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Customer\\Views\\Home\\DonCuaToi.cshtml",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Views\\Home\\DonCuaToi.cshtml",
+              "RelativeToolTip": "Areas\\Customer\\Views\\Home\\DonCuaToi.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-22T15:24:05.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DatVe.cshtml",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Views\\Home\\DatVe.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Customer\\Views\\Home\\DatVe.cshtml",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Views\\Home\\DatVe.cshtml",
+              "RelativeToolTip": "Areas\\Customer\\Views\\Home\\DatVe.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-21T10:18:25.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VnPaymentRequestModel.cs",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Models\\VnPaymentRequestModel.cs",
+              "RelativeDocumentMoniker": "Models\\VnPaymentRequestModel.cs",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Models\\VnPaymentRequestModel.cs",
+              "RelativeToolTip": "Models\\VnPaymentRequestModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T16:41:55.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ThanhToanViewModel.cs",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Models\\ThanhToanViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ThanhToanViewModel.cs",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Models\\ThanhToanViewModel.cs",
+              "RelativeToolTip": "Models\\ThanhToanViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T16:41:53.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Areas\\Customer\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\DoAnNganh\\OnlineMovieTicket\\Areas\\Customer\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Areas\\Customer\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAALIBAAAAAAAAAAAgwMoBAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T15:52:42.884Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
