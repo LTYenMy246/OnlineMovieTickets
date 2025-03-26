@@ -1,10 +1,3 @@
---- Nội dung của file zip ---
-	+ Một file zip chứa source code project (OnlineMovieTicket.zip).
-	+ Một file pdf báo cáo đồ án (2151010230_LeThiYenMy.pdf).
-	+ Một file README.txt để hướng dẫn và nói về cách chạy chương trình.
-	+ Một script SQL (Cinema.sql).
-
-
 --- Những yêu cầu cần có để chạy website ---
 	+ Bạn đã phải cài Visual Studio 2022 (VS2022). Vì phiên bản VS2019 KHÔNG hỗ trợ .NET 8, còn VS2022 thì có hỗ trợ .NET 8
 	+ Trong VS2022, đảm bảo là bạn đã cài gói "ASP.NET and web development", nếu chưa cài thì hãy cài về trước khi chạy (Bạn có thể kiểm tra xem VS2022 của mình đã có gói này chưa bằng cách: Visual Studio Installer => Tìm đến VS2022 => Modify)
